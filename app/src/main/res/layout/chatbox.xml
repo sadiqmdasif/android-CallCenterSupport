@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/border">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/chatFrame1"
+        android:layout_above="@+id/chatFrame2"
+        android:background="@drawable/border">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:text="CHATBOX"
+            android:id="@+id/textViewChatBx"
+            android:layout_gravity="left|top"
+            android:textSize="20dp"
+            android:gravity="center" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="624dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editTextChatBox"
+            android:layout_gravity="bottom"
+            android:scrollIndicators="bottom|top"
+            android:paddingBottom="15dp"
+            android:textSize="20dp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/chatFrame2"
+        android:layout_above="@+id/chatFrame3"
+        android:background="@drawable/border">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editTextChatInput"
+            android:background="@drawable/border" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chatFrame3"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/border">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="132dp"
+            android:text="Send"
+            android:id="@+id/buttonSendChatMsg"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center" />
+    </FrameLayout>
+</RelativeLayout>
