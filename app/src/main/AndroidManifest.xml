@@ -39,9 +39,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service android:name=".AutoAnswerIntentService"></service>
-        <service android:name=".CallCenter"></service>
-<activity android:name="proto.net.client.AndroidNetCommunicationClientActivity"/>
-        <activity android:name="proto.net.client.ChatBox"/>
+        <service android:name=".CallManagerService"></service>
+<activity android:name=".AndroidNetCommunicationClientActivity"/>
+        <activity android:name=".ChatBox"/>
         <activity android:name="navigationDrawer.NavigationActivity"/>
         <activity
             android:name=".MainScreen"

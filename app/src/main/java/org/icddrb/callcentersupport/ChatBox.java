@@ -1,19 +1,16 @@
-package proto.net.client;
+package org.icddrb.callcentersupport;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.icddrb.callcentersupport.R;
-
-import navigationDrawer.NavigationActivity;
-
 /**
  * Created by SadiqMdAsif on 03-May-16.
  */
-public class ChatBox extends NavigationActivity {
+public class ChatBox extends Activity {
 
     static TextView chatBox;
     static EditText chatBoxInput;
@@ -33,7 +30,6 @@ public class ChatBox extends NavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLayoutInflater().inflate(R.layout.chatbox, frameLayout);
         setContentView(R.layout.chatbox);
 
         chatBox = (TextView) findViewById(R.id.editTextChatBox);

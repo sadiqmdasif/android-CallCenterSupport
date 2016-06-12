@@ -1,5 +1,6 @@
-package proto.net.client;
+package org.icddrb.callcentersupport;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -18,8 +19,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import org.icddrb.callcentersupport.AutoAnswerIntentService;
-import org.icddrb.callcentersupport.R;
 import org.json.JSONArray;
 
 import java.lang.reflect.Constructor;
@@ -36,9 +35,8 @@ import eneter.messaging.messagingsystems.messagingsystembase.IDuplexOutputChanne
 import eneter.messaging.messagingsystems.messagingsystembase.IMessagingSystemFactory;
 import eneter.messaging.messagingsystems.tcpmessagingsystem.TcpMessagingSystemFactory;
 import eneter.net.system.EventHandler;
-import navigationDrawer.NavigationActivity;
 
-public class AndroidNetCommunicationClientActivity extends NavigationActivity {   // UI controls
+public class AndroidNetCommunicationClientActivity extends Activity {   // UI controls
     // Sender sending MyRequest and as a response receiving MyResponse.
     private static IDuplexStringMessagesFactory aStringMessagesFactory = new DuplexStringMessagesFactory();
     private static IDuplexStringMessageSender myStringMessageSender;

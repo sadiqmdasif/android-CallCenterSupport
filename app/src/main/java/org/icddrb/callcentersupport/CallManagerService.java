@@ -9,7 +9,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
-public class CallCenter extends Service {
+public class CallManagerService extends Service {
     public static String number;
     public static String CallID;
     int mStartMode;       // indicates how to behave if the service is killed
