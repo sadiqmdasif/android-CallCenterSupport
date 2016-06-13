@@ -30,31 +30,23 @@ public class CallManagerService extends Service {
                     if (state == TelephonyManager.CALL_STATE_RINGING) {
                         Toast.makeText(getApplicationContext(), "Phone Is Ringing" + incomingNumber, Toast.LENGTH_LONG).show();
                         number = incomingNumber;
-
-
                         //g.setPhoneNo(incomingNumber);
-                    }
-
-                    if (state == TelephonyManager.CALL_STATE_OFFHOOK) {
+                        AndroidNetCommunicationClientActivity.mMsgSendRequest("CommandMsgCallIncoming" + number);
+                    } else if (state == TelephonyManager.CALL_STATE_OFFHOOK) {
                         Toast.makeText(getApplicationContext(), "Phone is Currently in A call" + incomingNumber, Toast.LENGTH_LONG).show();
                         //number = mIntent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
                         number = incomingNumber;
 
 
-                    }
-                    if (state == TelephonyManager.DATA_CONNECTING) {
+                    } else if (state == TelephonyManager.DATA_CONNECTING) {
                         Toast.makeText(getApplicationContext(), "Phone is Connecting", Toast.LENGTH_LONG).show();
                         number = incomingNumber;
-                    }
-                    if (state == TelephonyManager.DATA_CONNECTED) {
+                    } else if (state == TelephonyManager.DATA_CONNECTED) {
                         number = incomingNumber;
-                    }
-                    if (state == TelephonyManager.DATA_DISCONNECTED) {
+                    } else if (state == TelephonyManager.DATA_DISCONNECTED) {
                         number = "";
                         CallID = "";
-                    }
-
-                    if (state == TelephonyManager.CALL_STATE_IDLE) {
+                    } else if (state == TelephonyManager.CALL_STATE_IDLE) {
                         Toast.makeText(getApplicationContext(), "phone is neither ringing nor in a call", Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {

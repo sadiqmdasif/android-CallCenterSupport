@@ -40,7 +40,7 @@ public class ChatBox extends Activity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AndroidNetCommunicationClientActivity.onSendRequest(chatBoxInput.getText().toString());
+                AndroidNetCommunicationClientActivity.mMsgSendRequest(chatBoxInput.getText().toString());
                 writeToChatBox(chatBoxInput.getText().toString());
             }
         });

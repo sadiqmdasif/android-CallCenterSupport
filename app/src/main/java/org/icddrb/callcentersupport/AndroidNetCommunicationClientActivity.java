@@ -52,7 +52,7 @@ public class AndroidNetCommunicationClientActivity extends Activity {   // UI co
 
     };
 
-    public static void onSendRequest(String msg) {
+    public static void mMsgSendRequest(String msg) {
         // Send the request message.
         try {
             myStringMessageSender.sendMessage(msg);
@@ -150,30 +150,28 @@ public class AndroidNetCommunicationClientActivity extends Activity {   // UI co
                         builder.append(baseUssd);
                         Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + builder.toString()));
                             */
-
                         int commandMsgLength = e.getResponseMessage().length();
                         String phoneNo = e.getResponseMessage().substring(18, commandMsgLength - 1);
                         Uri number = Uri.parse("tel:" + phoneNo);
-                        Intent callIntent = new Intent(Intent.ACTION_CALL, number);
-                        startActivity(callIntent);
+                        mDialCall(number);
+                        
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
                 } else if (e.getResponseMessage().equals("commandMsgCallReceive\n")) {
                     try {
-                        Intent intentCallAction = new Intent(getApplicationContext(), AutoAnswerIntentService.class);
-                        startService(intentCallAction);
+                        mReceiveCall();
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
                 } else if (e.getResponseMessage().equals("commandMsgCallEnd\n")) {
-
                     mEndCall();
                 } else if (e.getResponseMessage().contains("commandMsgSMSSend")) {
                     try {
                         int commandMsgLength = e.getResponseMessage().length();
                         String phoneNo = e.getResponseMessage().substring(17, 28);
                         String msg = e.getResponseMessage().substring(28, commandMsgLength - 1);
+
                         sendSMS(phoneNo, msg);
                     } catch (Exception e) {
                     }
@@ -182,6 +180,16 @@ public class AndroidNetCommunicationClientActivity extends Activity {   // UI co
 
             }
         });
+    }
+
+    private void mDialCall(Uri number) {
+        Intent callIntent = new Intent(Intent.ACTION_CALL, number);
+        startActivity(callIntent);
+    }
+
+    private void mReceiveCall() {
+        Intent intentCallAction = new Intent(getApplicationContext(), AutoAnswerIntentService.class);
+        startService(intentCallAction);
     }
 
     private void mEndCall() {
@@ -244,15 +252,12 @@ public class AndroidNetCommunicationClientActivity extends Activity {   // UI co
     }
 
     private String getCallDetails() {
-
-        StringBuffer sb = new StringBuffer();
         Cursor managedCursor = managedQuery(CallLog.Calls.CONTENT_URI, null,
                 null, null, null);
         int number = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
         int type = managedCursor.getColumnIndex(CallLog.Calls.TYPE);
         int date = managedCursor.getColumnIndex(CallLog.Calls.DATE);
         int duration = managedCursor.getColumnIndex(CallLog.Calls.DURATION);
-        sb.append("Call Details :");
 
         JsonObject jsonObject = null;
         JSONArray jsonArray = new JSONArray();
