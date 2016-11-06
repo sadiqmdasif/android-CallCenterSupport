@@ -38,16 +38,9 @@ public class CallManagerService extends Service {
                         number = incomingNumber;
 
 
-                    } else if (state == TelephonyManager.DATA_CONNECTING) {
-                        Toast.makeText(getApplicationContext(), "Phone is Connecting", Toast.LENGTH_LONG).show();
-                        number = incomingNumber;
-                    } else if (state == TelephonyManager.DATA_CONNECTED) {
-                        number = incomingNumber;
                     } else if (state == TelephonyManager.DATA_DISCONNECTED) {
                         number = "";
                         CallID = "";
-                    } else if (state == TelephonyManager.CALL_STATE_IDLE) {
-                        Toast.makeText(getApplicationContext(), "phone is neither ringing nor in a call", Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
